@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="view_project_task_tree" model="ir.ui.view">
+            <field name="name">project.task.tree</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="project_id"/>
+                    <field name="name"/>
+                    <field name="time"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
+
