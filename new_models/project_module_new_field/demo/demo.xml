@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <record model="p_m" id="p_m_0">
+            <field name="name">Project management</field>
+            <field name="description">Test Test Test
+            </field>
+        </record>
+        <record model="openacademy.course" id="course1">
+            <field name="name">Course 1</field>
+            <!-- no description for this one -->
+        </record> 
+            <record model="openacademy.course" id="course2">
+            <field name="name">Course 2</field>
+            <field name="description">Course 2's description</field>
+        </record> 
+    </data>
+</odoo>
