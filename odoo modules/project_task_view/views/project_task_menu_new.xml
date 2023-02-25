@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <menuitem id="menu_task_calendar" name="Task Calendar" parent="project.menu_main_pm" action="action_task_calendar"/>
+    <record id="action_task_calendar" model="ir.actions.act_window">
+      <field name="name">Task Calendar</field>
+      <field name="res_model">project.task</field>
+      <field name="view_mode">calendar,tree</field>
+      <field name="domain">[('stage_id.fold', '=', False)]</field>
+      <field name="context">{'search_default_not_completed': 1}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            Add new tasks and assign them to your team members from the Task Calendar.
+        </p>
+      </field>
+    </record>
+  </data>
+</odoo>
