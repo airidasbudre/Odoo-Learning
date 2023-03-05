@@ -1,3 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_project_project_user,Project User,project.edit_project,base.group_user,1,0,0,0
-access_project_project_manager,Project Manager,project.edit_project,project.group_project_manager,1,1,1,1
+access_cemeteries_list_view,Access Cemeteries List View,model_cemeteries_list_view,base.group_user,1,0,0,0
