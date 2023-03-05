@@ -26,7 +26,7 @@
     'data': [
         'views/cemeteries.xml',
         # 'security/security.xml',
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         # 'views/project_view_notebook_inherited_new.xml',
         # 'views/templates.xml',
     ],
