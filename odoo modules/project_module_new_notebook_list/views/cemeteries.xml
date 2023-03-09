@@ -5,8 +5,8 @@
             <field name="name">Cemeteries</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">cemeteries.list.view</field>
-            <!-- <field name="view_type">form</field> -->
-            <field name="view_mode">form,tree</field>
+            <field name="context">{'form_view_initial_mode': 'edit'}</field> 
+            <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Create a new quotation, the first step of a new sale!
@@ -14,9 +14,46 @@
                     Once the quotation is confirmed, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
                 </p>
             </field>
-        </record>
-    <!-- <menuitem id="cemeteries_root" name="Cemetery" sequence='2'/> -->
+    </record>
+
+    <record id="cemeteries_tree_view" model="ir.ui.view">
+        <field name="name">cemeteries.list.view.tree</field>
+        <field name="model">cemeteries.list.view</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="location"/>
+                <field name="date"/>
+                <field name="grave_number"/>
+                <field name="number_in_journals"/>
+                <field name="cemetery_area"/>
+                <field name="grave_photos"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="cemeteries_list_view" model="ir.ui.view">
+        <field name="name">cemeteries.list.view.form</field>
+        <field name="model">cemeteries.list.view</field>
+        <field name="arch" type="xml">
+            <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="location"/>
+                        <field name="date"/>
+                    </group>
+                    <group>
+                        <field name="grave_number"/>
+                        <field name="number_in_journals"/>
+                        <field name="cemetery_area"/>
+                        <field name="grave_photos"/>
+                    </group>
+            </form>
+        </field>
+    </record>
+
     <menuitem id="cemeteries_root" name="Cemetery" sequence="0"
           action="action_cemetery"/>
 
 </odoo>
+
