@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <record model="ir.ui.view" id="project_view_notebook_inherited">
@@ -6,13 +5,19 @@
             <field name="model">project.project</field>
             <field name="inherit_id" ref="project.edit_project"/>
             <field name="arch" type="xml">
-                <form>
-                    <notebook>
+                    <notebook position='inside'>
                         <page string="Cemeteries">
-                            <field name="cemetery"/>
+                        <group>
+                            <field name="cemetery_ids" >
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="location"/>
+                                    <field name="date"/>
+                                </tree>
+                            </field>
+                        </group>
                         </page>
                     </notebook>
-                </form>
             </field>
         </record>
     </data>
