@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="product_notebook_add" model="ir.ui.view">
+            <field name="name">product.notebook.add</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <notebook position='inside'>
+                    <page string="Amazon" name='amazon'>
+                        <group>
+                            <group name="group_amazon1">
+                                <field name="image_1920" widget="image" class="oe_avatar"/>
+                            </group>
+                            <group name="group_amazon2">
+                                <field name="weight"/>
+                                <field name="uom_id" groups="uom.group_uom" options="{'no_create': True}"/>
+                                <field name="list_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Ebay" name='ebay'>
+                        <field name="attribute_line_ids" widget="one2many" context="{'show_attribute': False}">
+                            <tree string="Variants" editable="bottom" decoration-info="value_count &lt;= 1">
+                                <field name="value_count" invisible="1"/>
+                                <field name="attribute_id" attrs="{'readonly': [('id', '!=', False)]}"/>
+                                <field name="value_ids" widget="many2many_tags" options="{'no_create_edit': True, 'color_field': 'color'}" context="{'default_attribute_id': attribute_id, 'show_attribute': False}"/>
+                                <button string="Configure" class="float-right btn-secondary" type="object" name="action_open_attribute_values" groups="product.group_product_variant"/>
+                            </tree>
+                        </field>
+                        <group>
+                            <group name="group_ebay1">
+                                <field name="image_1920" widget="image" class="oe_avatar"/>
+                            </group>
+                            <group name="group_ebay2">
+                                <field name="allow_out_of_stock_order" class="oe_inline" modifiers="{}"/>
+                                <field name="list_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="LT" name='lithuania'>
+                        <group>
+                            <group name="group_lt">
+                                <field name="image_1920" widget="image" class="oe_avatar"/>
+                            </group>
+                            <group name="group_lt2">
+                                <field name="alternative_product_ids" widget="many2many_tags" domain="[('id', '!=', active_id), '|', ('company_id', '=', company_id), ('company_id', '=', False)]" attrs="{'invisible': [('sale_ok','=',False)]}" placeholder="Displayed in bottom of product pages" on_change="1" can_create="true" can_write="true" modifiers="{&quot;invisible&quot;: [[&quot;sale_ok&quot;, &quot;=&quot;, false]]}"/>
+                                <field name="uom_id" groups="uom.group_uom" options="{'no_create': True}"/>
+                                <field name="list_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="LV" name='latvia'>
+                        <group>
+                            <group name="group_lv1">
+                                <field name="image1" widget="image" class="oe_avatar"/>
+                            </group>
+                            <group name="group_lv2">
+                                <field name="weight"/>
+                                <field name="volume" string="Volume"/>
+                                <field name="list_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="EE" name='estonia'>
+                        <group>
+                            <group name="group_ee1">
+                                <field name="image_1920" widget="image" class="oe_avatar"/>
+                            </group>
+                            <group name="group_ee2">
+                                <field name="weight"/>
+                                <field name="volume" string="Volume"/>
+                                <field name="accessory_product_ids" widget="many2many_tags" attrs="{'invisible': [('sale_ok','=',False)]}"
+                                    placeholder="Suggested accessories in the eCommerce cart"/>
+                                <field name="list_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+    <record id="product_tree_view_inherited" model="ir.ui.view">
+        <field name="name">product.tree.view.inherited</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <tree string="Product Variants">
+                <field name='progress_amazon' widget="progressbar" optional="hide"/>
+                <field name='progress_ebay' widget="progressbar" optional="hide"/>
+                <field name='progress_lt' widget="progressbar" optional="hide"/>
+                <field name='progress_lv' widget="progressbar" optional="hide"/>
+                <field name='progress_ee' widget="progressbar" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
+
+
+
+
